@@ -13,6 +13,7 @@
         <module>commerce-alibaba-nacos-client</module>
         <module>commerce-admin</module>
         <module>commerce-authority-center</module>
+        <module>commerce-gateway</module>
     </modules>
 
     <packaging>pom</packaging>
