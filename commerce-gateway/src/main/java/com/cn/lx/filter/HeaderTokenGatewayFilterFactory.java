@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * @date 2021/8/11 下午11:13
  */
 @Component
-public class HeadTokenGatewayFilterFactory extends AbstractGatewayFilterFactory<Object> {
+public class HeaderTokenGatewayFilterFactory extends AbstractGatewayFilterFactory<Object> {
     @Override
     public GatewayFilter apply(Object config) {
         return new HeadTokenGatewayFilter();
