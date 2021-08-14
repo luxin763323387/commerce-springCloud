@@ -24,7 +24,7 @@ public final class CommonConstant {
     /**
      * 授权中旬的 server_id
      */
-    public static final String COMMERCE_AUTHORITY_CENTER = "commerce-authority-center";
+    public static final String AUTHORITY_CENTER_SERVICE_ID = "commerce-authority-center";
 }
 
 
