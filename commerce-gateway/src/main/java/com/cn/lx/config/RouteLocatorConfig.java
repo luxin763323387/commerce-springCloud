@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
+ * 手动配置 路由规则
  * <h1>配置登录请求转发规则</h1>
  * */
 @Configuration

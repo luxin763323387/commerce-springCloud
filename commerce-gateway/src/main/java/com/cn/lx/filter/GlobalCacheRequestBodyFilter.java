@@ -16,6 +16,7 @@ import reactor.core.publisher.Mono;
 import java.util.Objects;
 
 /**
+ * 对登入和注册缓存请求 body 的全局过滤器
  * @author StevenLu
  * @date 2021/8/13 下午11:03
  */

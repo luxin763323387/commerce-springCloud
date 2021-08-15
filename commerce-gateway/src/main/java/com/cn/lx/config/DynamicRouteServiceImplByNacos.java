@@ -6,7 +6,6 @@ import com.alibaba.nacos.api.NacosFactory;
 import com.alibaba.nacos.api.config.ConfigService;
 import com.alibaba.nacos.api.config.listener.Listener;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.cloud.gateway.route.RouteDefinition;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;
@@ -19,13 +18,15 @@ import java.util.concurrent.Executor;
 
 /**
  * 通过 nacos 下发动态路由配置, 监听 Nacos 中路由配置变更
+ *
+ * 如果没有nacos 可以手动编写配置，参考 {@link com.cn.lx.config.RouteLocatorConfig}
  * @author StevenLu
  * @date 2021/8/8 下午11:22
  */
 @Slf4j
 @Component
 @DependsOn("gatewayConfig")
-public class DynamicRouteServiceImplByNacos implements InitializingBean {
+public class DynamicRouteServiceImplByNacos {
 
     private ConfigService configService;
     private final DynamicRouteServiceImpl dynamicRouteService;
@@ -113,10 +114,5 @@ public class DynamicRouteServiceImplByNacos implements InitializingBean {
         } catch (Exception ex) {
             log.error("dynamic update gateway config error: ", ex);
         }
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-
     }
 }
