@@ -15,14 +15,15 @@ spring:
         metadata:
           management:
             context-path: ${server.servlet.context-path}/actuator
-    # 静态路由
-  #    gateway:
-  #      routes:
-  #        - id: path_route # 路由的ID
-  #          uri: 127.0.0.1:8080/user/{id} # 匹配后路由地址
-  #          predicates: # 断言, 路径相匹配的进行路由
-  #            - Path=/user/{id}
-#  kafka:
+#    静态路由
+#    gateway:
+#      routes:
+#        - id: path_route # 路由的ID
+#          uri: lb://commerce-gateway # 匹配后路由地址
+#          predicates: # 断言, 路径相匹配的进行路由
+#            - Path=/gateway/commerce/login,/gateway/commerce/register
+
+  #  kafka:
 #    bootstrap-servers: 127.0.0.1:9092
 #    producer:
 #      retries: 3
