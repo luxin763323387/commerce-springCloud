@@ -16,7 +16,7 @@ public class SecuritySecureConfig extends WebSecurityConfigurerAdapter {
 
     private final String adminContextPath;
 
-    public  SecuritySecureConfig(AdminServerProperties adminContextPath){
+    public SecuritySecureConfig(AdminServerProperties adminContextPath) {
         this.adminContextPath = adminContextPath.getContextPath();
     }
 

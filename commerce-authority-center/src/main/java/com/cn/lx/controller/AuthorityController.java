@@ -27,7 +27,7 @@ public class AuthorityController {
 
     @PostMapping("/token")
     @IgnoreResponseAdvice
-    public JwtToken token(@RequestBody UserNameAndPassword userNameAndPassword) throws Exception{
+    public JwtToken token(@RequestBody UserNameAndPassword userNameAndPassword) throws Exception {
 
         log.info("用户获取token参数:{}", JSON.toJSONString(userNameAndPassword));
         String token = ijwtService.generateToken(userNameAndPassword.getUserName(), userNameAndPassword.getPassword());
@@ -37,7 +37,7 @@ public class AuthorityController {
 
     @PostMapping("/register")
     @IgnoreResponseAdvice
-    public JwtToken register(@RequestBody UserNameAndPassword userNameAndPassword) throws Exception{
+    public JwtToken register(@RequestBody UserNameAndPassword userNameAndPassword) throws Exception {
 
         log.info("用户注册:{}", JSON.toJSONString(userNameAndPassword));
         String string = ijwtService.registerUserAndGenerateToken(userNameAndPassword);

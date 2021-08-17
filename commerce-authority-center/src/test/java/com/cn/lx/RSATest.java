@@ -7,8 +7,9 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.security.*;
-import java.security.interfaces.RSAKey;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.NoSuchAlgorithmException;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 
@@ -39,9 +40,8 @@ public class RSATest {
         String publicEncode = Base64.encode(publicKey.getEncoded());
         String privateEncode = Base64.encode(privateKey.getEncoded());
 
-        log.info("publickey:{}",publicEncode);
-        log.info("privatekey:{}",privateEncode);
-
+        log.info("publickey:{}", publicEncode);
+        log.info("privatekey:{}", privateEncode);
 
 
     }

@@ -40,7 +40,9 @@ import java.util.concurrent.atomic.AtomicReference;
 @Component
 public class GlobalLoginOrRegisterFilter implements GlobalFilter, Ordered {
 
-    /** 注册中心客户端, 可以从注册中心中获取服务实例信息 */
+    /**
+     * 注册中心客户端, 可以从注册中心中获取服务实例信息
+     */
     private final LoadBalancerClient loadBalancerClient;
     private final RestTemplate restTemplate;
 
@@ -76,7 +78,7 @@ public class GlobalLoginOrRegisterFilter implements GlobalFilter, Ordered {
         }
 
         //2、 如果是注册
-        if(request.getURI().getPath().contains(GatewayConstant.REGISTER_URI)){
+        if (request.getURI().getPath().contains(GatewayConstant.REGISTER_URI)) {
             //授权中心拿token
             String token = getTokenFromAuthorityCenter(request, GatewayConstant.AUTHORITY_CENTER_REGISTER_URI_FORMAT);
             response.getHeaders().add(

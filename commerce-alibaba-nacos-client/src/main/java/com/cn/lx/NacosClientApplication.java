@@ -12,7 +12,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @EnableDiscoveryClient
 public class NacosClientApplication {
 
-    public static void main(String []arg){
-        SpringApplication.run(NacosClientApplication.class,arg);
+    public static void main(String[] arg) {
+        SpringApplication.run(NacosClientApplication.class, arg);
     }
 }

@@ -23,7 +23,7 @@ public class AuthorityTest {
     private IJWTService ijwtService;
 
     @Test
-    public void parseTokenTest() throws Exception{
+    public void parseTokenTest() throws Exception {
 
         System.out.println(MD5.create().digestHex("123456"));
         String token = ijwtService.generateToken("luxin", "e10adc3949ba59abbe56e057f20f883e");

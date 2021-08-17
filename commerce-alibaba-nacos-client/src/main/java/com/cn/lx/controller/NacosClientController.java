@@ -25,7 +25,7 @@ public class NacosClientController {
     private NacosClientService nacosClientService;
 
     @GetMapping("/service-instance")
-    List<ServiceInstance> logNamcosClientInfo(@RequestParam(defaultValue = "commerce-nacos-client") String serviceId){
+    List<ServiceInstance> logNamcosClientInfo(@RequestParam(defaultValue = "commerce-nacos-client") String serviceId) {
         return nacosClientService.getNacosClientInfo(serviceId);
     }
 

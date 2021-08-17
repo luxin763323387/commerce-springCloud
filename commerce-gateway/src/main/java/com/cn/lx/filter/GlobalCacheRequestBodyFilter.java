@@ -17,6 +17,7 @@ import java.util.Objects;
 
 /**
  * 对登入和注册缓存请求 body 的全局过滤器
+ *
  * @author StevenLu
  * @date 2021/8/13 下午11:03
  */
@@ -26,14 +27,14 @@ public class GlobalCacheRequestBodyFilter implements GlobalFilter, Ordered {
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
 
         //判断是否是登入url或者注册url
-       boolean isloginOrRegister = exchange.getRequest().getURI().getPath().contains(GatewayConstant.LOGIN_URI)
+        boolean isloginOrRegister = exchange.getRequest().getURI().getPath().contains(GatewayConstant.LOGIN_URI)
                 || exchange.getRequest().getURI().getPath().contains(GatewayConstant.REGISTER_URI);
 
-       if(Objects.isNull(exchange.getRequest().getHeaders().getContentType()) || !isloginOrRegister){
-           return chain.filter(exchange);
-       }
+        if (Objects.isNull(exchange.getRequest().getHeaders().getContentType()) || !isloginOrRegister) {
+            return chain.filter(exchange);
+        }
 
-        return DataBufferUtils.join(exchange.getRequest().getBody()).flatMap(dataBuffer ->{
+        return DataBufferUtils.join(exchange.getRequest().getBody()).flatMap(dataBuffer -> {
             // 确保数据缓冲区不被释放, 必须要 DataBufferUtils.retain
             DataBufferUtils.retain(dataBuffer);
             // defer、just 都是去创建数据源, 得到当前数据的副本

@@ -22,11 +22,12 @@ public class NacosClientService {
 
     /**
      * 打印Nacos Client 信息到日志中
+     *
      * @param serviceId
      * @return
      */
-    public List<ServiceInstance> getNacosClientInfo(String serviceId){
-        log.info("服务客户端请求的服务id:{}",serviceId);
+    public List<ServiceInstance> getNacosClientInfo(String serviceId) {
+        log.info("服务客户端请求的服务id:{}", serviceId);
         return discoveryClient.getInstances(serviceId);
     }
 }

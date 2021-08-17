@@ -14,8 +14,8 @@ import reactor.core.publisher.Mono;
 import java.util.List;
 
 /**
- *
  * 事件推送 Aware: 动态更新路由网关 Service
+ *
  * @author StevenLu
  * @date 2021/8/8 下午9:56
  */
@@ -36,11 +36,10 @@ public class DynamicRouteServiceImpl implements ApplicationEventPublisherAware {
     private ApplicationEventPublisher publisher;
 
     public DynamicRouteServiceImpl(RouteDefinitionWriter writer,
-                                   RouteDefinitionLocator locator){
+                                   RouteDefinitionLocator locator) {
         this.routeDefinitionWriter = writer;
         this.routeDefinitionLocator = locator;
     }
-
 
 
     @Override
@@ -53,7 +52,7 @@ public class DynamicRouteServiceImpl implements ApplicationEventPublisherAware {
 
     /**
      * <h2>增加路由定义</h2>
-     * */
+     */
     public String addRouteDefinition(RouteDefinition definition) {
 
         log.info("gateway add route: [{}]", definition);
@@ -68,7 +67,7 @@ public class DynamicRouteServiceImpl implements ApplicationEventPublisherAware {
 
     /**
      * <h2>更新路由</h2>
-     * */
+     */
     public String updateList(List<RouteDefinition> definitions) {
 
         log.info("gateway update route: [{}]", definitions);
@@ -91,30 +90,31 @@ public class DynamicRouteServiceImpl implements ApplicationEventPublisherAware {
 
     /**
      * 通过路由id删除路由
+     *
      * @param id
      * @return
      */
-    private String deleteById(String id){
+    private String deleteById(String id) {
 
-        try{
-            log.info("网关删除路由id:{}",id);
+        try {
+            log.info("网关删除路由id:{}", id);
             this.routeDefinitionWriter.delete(Mono.just(id)).subscribe();
             //发布事件通知 给gateway 更新路由定义
             this.publisher.publishEvent(new RefreshRoutesEvent(this));
             return "delete success";
-        }catch (Exception ex){
-            log.error("gateway delete route fail:[{}]",ex.getMessage(),ex);
+        } catch (Exception ex) {
+            log.error("gateway delete route fail:[{}]", ex.getMessage(), ex);
             return "delete fail";
         }
     }
 
 
-    private String updateByRouteDefinition(RouteDefinition definition){
+    private String updateByRouteDefinition(RouteDefinition definition) {
 
         //删除
-        try{
+        try {
             this.routeDefinitionWriter.delete(Mono.just(definition.getId())).subscribe();
-        }catch (Exception ex){
+        } catch (Exception ex) {
             return "update fail, not find rout routeId:{}" + definition.getId();
         }
 
@@ -123,12 +123,11 @@ public class DynamicRouteServiceImpl implements ApplicationEventPublisherAware {
             this.routeDefinitionWriter.save(Mono.just(definition)).subscribe();
             this.publisher.publishEvent(new RefreshRoutesEvent(this));
             return "update success";
-        }catch (Exception ex){
+        } catch (Exception ex) {
             return "save fail, not find rout routeId:{}" + definition.getId();
         }
 
     }
-
 
 
 }

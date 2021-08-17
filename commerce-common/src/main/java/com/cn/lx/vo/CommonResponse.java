@@ -8,10 +8,11 @@ import java.io.Serializable;
 
 /**
  * {
- *     "code" : 0,
- *     "message : "",
- *     "data":{}
+ * "code" : 0,
+ * "message : "",
+ * "data":{}
  * }
+ *
  * @author StevenLu
  * @date 2021/7/25 下午11:05
  */
@@ -38,26 +39,24 @@ public class CommonResponse<T> implements Serializable {
     private T date;
 
 
-    public CommonResponse (Integer code, String message){
+    public CommonResponse(Integer code, String message) {
         this.code = code;
         this.message = message;
+    }
+
+    private CommonResponse(T data) {
+        this.code = SUCCESS;
+        this.message = "";
+        this.date = data;
     }
 
     public static <T> CommonResponse<T> success(T data) {
         return new CommonResponse<T>(data);
     }
 
-
-    private CommonResponse(T data){
-        this.code = SUCCESS;
-        this.message = "";
-        this.date = data;
-    }
-
-    public  boolean isSuccess(){
+    public boolean isSuccess() {
         return SUCCESS.equals(this.code);
     }
-
 
 
 }

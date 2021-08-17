@@ -1,7 +1,6 @@
 package com.cn.lx.util;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.cn.lx.constant.CommonConstant;
 import com.cn.lx.vo.LoginUserInfo;
 import io.jsonwebtoken.Claims;

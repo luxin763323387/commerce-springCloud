@@ -10,19 +10,29 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class GatewayConfig {
 
-    /** 读取配置的超时时间 */
+    /**
+     * 读取配置的超时时间
+     */
     public static final long DEFAULT_TIMEOUT = 30000;
 
-    /** Nacos 服务器地址 */
+    /**
+     * Nacos 服务器地址
+     */
     public static String NACOS_SERVER_ADDR;
 
-    /** 命名空间 */
+    /**
+     * 命名空间
+     */
     public static String NACOS_NAMESPACE;
 
-    /** data-id */
+    /**
+     * data-id
+     */
     public static String NACOS_ROUTE_DATA_ID;
 
-    /** 分组 id */
+    /**
+     * 分组 id
+     */
     public static String NACOS_ROUTE_GROUP;
 
     @Value("${spring.cloud.nacos.discovery.server-addr}")

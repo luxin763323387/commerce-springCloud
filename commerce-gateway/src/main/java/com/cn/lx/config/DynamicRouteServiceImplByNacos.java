@@ -18,8 +18,9 @@ import java.util.concurrent.Executor;
 
 /**
  * 通过 nacos 下发动态路由配置, 监听 Nacos 中路由配置变更
- *
+ * <p>
  * 如果没有nacos 可以手动编写配置，参考 {@link com.cn.lx.config.RouteLocatorConfig}
+ *
  * @author StevenLu
  * @date 2021/8/8 下午11:22
  */
@@ -28,8 +29,8 @@ import java.util.concurrent.Executor;
 @DependsOn("gatewayConfig")
 public class DynamicRouteServiceImplByNacos {
 
-    private ConfigService configService;
     private final DynamicRouteServiceImpl dynamicRouteService;
+    private ConfigService configService;
 
     public DynamicRouteServiceImplByNacos(DynamicRouteServiceImpl dynamicRouteService) {
         this.dynamicRouteService = dynamicRouteService;
@@ -39,10 +40,10 @@ public class DynamicRouteServiceImplByNacos {
      * Bean 在容器中构造完成之后会执行 init 方法
      */
     @PostConstruct
-    public  void init(){
-        try{
+    public void init() {
+        try {
             configService = initConfigService();
-            if(Objects.isNull(configService)){
+            if (Objects.isNull(configService)) {
                 log.error("config init fail");
                 return;
             }
@@ -52,15 +53,15 @@ public class DynamicRouteServiceImplByNacos {
                     GatewayConfig.NACOS_ROUTE_GROUP,
                     GatewayConfig.DEFAULT_TIMEOUT);
 
-            log.info("初始化第一次添加的配置信息:{}",config);
+            log.info("初始化第一次添加的配置信息:{}", config);
             List<RouteDefinition> routeDefinitions = JSONObject.parseArray(config, RouteDefinition.class);
             routeDefinitions.forEach(dynamicRouteService::addRouteDefinition);
-        }catch (Exception ex){
+        } catch (Exception ex) {
             log.error("gateway route init has some error: [{}]", ex.getMessage(), ex);
         }
 
         //设置监听器，监听后续变更情况
-        dynamicRouteByNacosListener(GatewayConfig.NACOS_ROUTE_DATA_ID,GatewayConfig.NACOS_ROUTE_GROUP);
+        dynamicRouteByNacosListener(GatewayConfig.NACOS_ROUTE_DATA_ID, GatewayConfig.NACOS_ROUTE_GROUP);
 
     }
 

@@ -7,10 +7,11 @@ import java.lang.annotation.Target;
 
 /**
  * 忽略统一响应
+ *
  * @author StevenLu
  * @date 2021/7/26 上午8:16
  */
-@Target({ElementType.TYPE,ElementType.METHOD})
+@Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface IgnoreResponseAdvice {
 }

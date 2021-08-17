@@ -15,6 +15,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 public class AuthorityApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(AuthorityApplication.class,args);
+        SpringApplication.run(AuthorityApplication.class, args);
     }
 }

@@ -3,18 +3,26 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>commerce-srpingCloud</artifactId>
+        <artifactId>commerce-service</artifactId>
         <groupId>com.cn.lx</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>commerce-common</artifactId>
+    <artifactId>commerce-service-config</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <!-- 模块名及描述信息 -->
-    <name>commerce-common</name>
-    <description>通用模块</description>
+    <name>e-commerce-service-config</name>
+    <description>服务通用配置</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.cn.lx</groupId>
+            <artifactId>commerce-mvc-config</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>

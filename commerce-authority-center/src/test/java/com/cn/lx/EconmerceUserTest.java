@@ -22,7 +22,7 @@ public class EconmerceUserTest {
     private EcommerceUserDao ecommerceUserDao;
 
     @Test
-    public void add(){
+    public void add() {
         EcommerceUser ecommerceUser = new EcommerceUser();
         ecommerceUser.setUsername("luxin");
         ecommerceUser.setPassword(MD5.create().digestHex("123456"));
@@ -31,7 +31,7 @@ public class EconmerceUserTest {
     }
 
     @Test
-    public void find(){
+    public void find() {
 
         EcommerceUser luxin = ecommerceUserDao.findByUsername("luxin");
         System.out.println(JSON.toJSONString(luxin));
@@ -39,7 +39,6 @@ public class EconmerceUserTest {
         EcommerceUser luxin1 = ecommerceUserDao.findByUsernameAndPassword("luxin", MD5.create().digestHex("123456"));
         System.out.println(JSON.toJSONString(luxin1));
     }
-
 
 
 }

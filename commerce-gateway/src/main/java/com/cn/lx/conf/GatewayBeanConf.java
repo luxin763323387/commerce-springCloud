@@ -6,6 +6,7 @@ import org.springframework.web.client.RestTemplate;
 
 /**
  * 网关需要注入到容器中的 Bean
+ *
  * @author StevenLu
  * @date 2021/8/14 下午9:46
  */

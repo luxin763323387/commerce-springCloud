@@ -21,7 +21,7 @@ public class GlobalExceptionAdvice {
     public CommonResponse<String> handlerCommerceException(HttpServletRequest request, Exception ex) {
         CommonResponse<String> response = new CommonResponse<>(-1, "business error");
         response.setDate(ex.getMessage());
-        log.error("commerce service has error:[{}]",ex.getMessage(),ex);
+        log.error("commerce service has error:[{}]", ex.getMessage(), ex);
         return response;
     }
 }
