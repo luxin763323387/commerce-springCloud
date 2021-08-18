@@ -17,6 +17,8 @@
     <description>电商服务模块父模块</description>
     <modules>
         <module>commerce-service-config</module>
+        <module>commerce-account-service</module>
+        <module>commerce-account-sdk</module>
     </modules>
 
     <dependencies>

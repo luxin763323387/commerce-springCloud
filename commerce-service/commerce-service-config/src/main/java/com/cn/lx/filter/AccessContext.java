@@ -13,7 +13,7 @@ import com.cn.lx.vo.LoginUserInfo;
  */
 public class AccessContext {
 
-    public static final ThreadLocal<LoginUserInfo> userInfoThreadLocal = new ThreadLocal<>();
+    private static final ThreadLocal<LoginUserInfo> userInfoThreadLocal = new ThreadLocal<>();
 
     public static LoginUserInfo getLoginUserInfo() {
         return userInfoThreadLocal.get();
