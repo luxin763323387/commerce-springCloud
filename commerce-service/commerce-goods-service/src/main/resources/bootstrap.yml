@@ -1,11 +1,11 @@
 server:
-  port: 8003
+  port: 8001
   servlet:
-    context-path: /commerce-account-service
+    context-path: /commerce-goods-service
 
 spring:
   application:
-    name: commerce-account-service
+    name: commerce-goods-service
   cloud:
     nacos:
       discovery:
@@ -27,7 +27,7 @@ spring:
       probability: 1.0  # 采样比例, 1.0 表示 100%, 默认是 0.1
   zipkin:
     sender:
-      type: kafka # 默认是 web
+      type: kafka # 默认是 http
     base-url: http://localhost:9411/
   jpa:
     show-sql: true
@@ -52,7 +52,14 @@ spring:
       connection-timeout: 30000
       max-lifetime: 45000
       auto-commit: true
-      pool-name: ImoocEcommerceHikariCP
+      pool-name: ImoocCouponHikariCP
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    # password:
+    # 连接超时时间
+    timeout: 10000
 
 # 暴露端点
 management:

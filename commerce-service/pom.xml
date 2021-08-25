@@ -18,7 +18,7 @@
     <modules>
         <module>commerce-service-config</module>
         <module>commerce-account-service</module>
-        <module>commerce-account-sdk</module>
+        <module>commerce-service-sdk</module>
     </modules>
 
     <dependencies>

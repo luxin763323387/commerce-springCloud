@@ -11,12 +11,13 @@ public interface IBalanceService {
 
     /**
      * <h2>获取当前用户余额信息</h2>
-     * */
-    BalanceInfo getCurrentUserBalanceInfo(Long userId);
+     */
+    BalanceInfo getCurrentUserBalanceInfo();
 
     /**
      * <h2>扣减用户余额</h2>
+     *
      * @param balanceInfo 代表想要扣减的余额
-     * */
+     */
     BalanceInfo deductBalance(BalanceInfo balanceInfo);
 }

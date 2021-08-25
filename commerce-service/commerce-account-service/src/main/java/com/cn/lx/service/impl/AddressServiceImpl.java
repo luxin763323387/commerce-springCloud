@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 @Service
 @Slf4j
 @Transactional(rollbackFor = Exception.class)
-public class IAddressServiceImpl implements IAddressService {
+public class AddressServiceImpl implements IAddressService {
 
     @Autowired
     private EcommerceAddressDao ecommerceAddressDao;
@@ -53,14 +53,14 @@ public class IAddressServiceImpl implements IAddressService {
     }
 
     @Override
-    public AddressInfo getCurrentAddressInfo(Long id) {
+    public AddressInfo getCurrentAddressInfo() {
 
         LoginUserInfo loginUserInfo = AccessContext.getLoginUserInfo();
 
         List<EcommerceAddress> ecommerceAddressList = ecommerceAddressDao.findAllByUserId(loginUserInfo.getUid());
 
         List<AddressInfo.AddressItem> addressItemList = ecommerceAddressList.stream().map(EcommerceAddress::toAddressItem).collect(Collectors.toList());
-        AddressInfo addressInfo = new AddressInfo(loginUserInfo.getUid(),addressItemList);
+        AddressInfo addressInfo = new AddressInfo(loginUserInfo.getUid(), addressItemList);
 
         return addressInfo;
     }
@@ -70,8 +70,8 @@ public class IAddressServiceImpl implements IAddressService {
 
         EcommerceAddress ecommerceAddress = ecommerceAddressDao.findById(id).orElse(null);
 
-        if (Objects.isNull(ecommerceAddress)){
-            return new AddressInfo(-1L,Collections.emptyList());
+        if (Objects.isNull(ecommerceAddress)) {
+            return new AddressInfo(-1L, Collections.emptyList());
         }
 
         return new AddressInfo(AccessContext.getLoginUserInfo().getUid(),
@@ -82,12 +82,12 @@ public class IAddressServiceImpl implements IAddressService {
     public AddressInfo getAddressInfoByTableId(TableId tableId) {
 
         List<Long> ids = tableId.getIds().stream().map(TableId.Id::getId).collect(Collectors.toList());
-        if(CollectionUtils.isEmpty(ids)){
-            return new AddressInfo(-1L,Collections.emptyList());
+        if (CollectionUtils.isEmpty(ids)) {
+            return new AddressInfo(-1L, Collections.emptyList());
         }
 
         List<EcommerceAddress> ecommerceAddressList = ecommerceAddressDao.findAllById(ids);
         List<AddressInfo.AddressItem> addressItemList = ecommerceAddressList.stream().map(EcommerceAddress::toAddressItem).collect(Collectors.toList());
-        return new AddressInfo(ecommerceAddressList.get(0).getUserId(),addressItemList);
+        return new AddressInfo(ecommerceAddressList.get(0).getUserId(), addressItemList);
     }
 }

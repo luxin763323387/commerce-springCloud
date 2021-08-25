@@ -11,6 +11,7 @@ import java.util.List;
 
 /**
  * 用户地址信息
+ *
  * @author StevenLu
  * @date 2021/8/18 下午10:05
  */
@@ -28,7 +29,7 @@ public class AddressInfo {
 
     /**
      * <h2>单个的地址信息</h2>
-     * */
+     */
     @ApiModel(description = "用户的单个地址信息")
     @Data
     @NoArgsConstructor
@@ -65,7 +66,7 @@ public class AddressInfo {
 
         /**
          * <h2>将 AddressItem 转换成 UserAddress</h2>
-         * */
+         */
         public UserAddress toUserAddress() {
 
             UserAddress userAddress = new UserAddress();

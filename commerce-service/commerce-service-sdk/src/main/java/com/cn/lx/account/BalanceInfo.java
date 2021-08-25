@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 /**
  * <h1>用户账户余额信息</h1>
- * */
+ */
 @ApiModel(description = "用户账户余额信息")
 @Data
 @NoArgsConstructor

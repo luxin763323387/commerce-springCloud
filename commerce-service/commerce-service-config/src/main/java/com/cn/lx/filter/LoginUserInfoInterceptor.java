@@ -27,7 +27,7 @@ public class LoginUserInfoInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
 
-        if(checkedWhiteUrl(request.getRequestURI())){
+        if (checkedWhiteUrl(request.getRequestURI())) {
             return true;
         }
 
@@ -39,9 +39,9 @@ public class LoginUserInfoInterceptor implements HandlerInterceptor {
             log.error("parse login user info error: [{}]", ex.getMessage(), ex);
         }
 
-        if (Objects.isNull(loginUserInfo)){
+        if (Objects.isNull(loginUserInfo)) {
             log.error("不能解析当前用户信息-参数:{}", JSON.toJSONString(loginUserInfo));
-            throw  new RuntimeException("不能解析当前用户信息");
+            throw new RuntimeException("不能解析当前用户信息");
         }
 
         AccessContext.setLoginUserInfo(loginUserInfo);
@@ -57,12 +57,12 @@ public class LoginUserInfoInterceptor implements HandlerInterceptor {
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
 
         //用完删除
-        if(Objects.nonNull(AccessContext.getLoginUserInfo())){
+        if (Objects.nonNull(AccessContext.getLoginUserInfo())) {
             AccessContext.remove();
         }
     }
 
-    private boolean checkedWhiteUrl(String url){
+    private boolean checkedWhiteUrl(String url) {
         return StringUtils.containsAny(
                 url,
                 "springfox", "swagger", "v2",

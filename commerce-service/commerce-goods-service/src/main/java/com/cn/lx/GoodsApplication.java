@@ -7,14 +7,14 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 /**
  * @author StevenLu
- * @date 2021/8/18 下午9:10
+ * @date 2021/8/25 下午10:20
  */
 @EnableJpaAuditing  // 允许 Jpa 自动审计
 @EnableDiscoveryClient
 @SpringBootApplication
-public class AccountApplication {
+public class GoodsApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(AccountApplication.class, args);
+        SpringApplication.run(GoodsApplication.class, args);
     }
 }

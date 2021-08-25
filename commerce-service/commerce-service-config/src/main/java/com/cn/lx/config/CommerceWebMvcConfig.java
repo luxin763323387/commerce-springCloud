@@ -8,6 +8,7 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
 /**
  * Web Mvc 配置
+ *
  * @author StevenLu
  * @date 2021/8/17 下午10:38
  */
@@ -16,7 +17,7 @@ public class CommerceWebMvcConfig extends WebMvcConfigurationSupport {
 
     /**
      * <h2>添加拦截器配置</h2>
-     * */
+     */
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new LocaleChangeInterceptor())
@@ -25,7 +26,7 @@ public class CommerceWebMvcConfig extends WebMvcConfigurationSupport {
 
     /**
      * <h2>让 MVC 加载 Swagger 的静态资源</h2>
-     * */
+     */
     @Override
     protected void addResourceHandlers(ResourceHandlerRegistry registry) {
 

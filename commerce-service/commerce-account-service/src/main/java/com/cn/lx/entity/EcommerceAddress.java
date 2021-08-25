@@ -19,6 +19,7 @@ import java.util.Date;
 
 /**
  * 用户地址表实体类定义
+ *
  * @author StevenLu
  * @date 2021/8/18 下午10:03
  */
@@ -31,49 +32,67 @@ import java.util.Date;
 @Table(name = "t_ecommerce_address")
 public class EcommerceAddress {
 
-    /** 自增主键 */
+    /**
+     * 自增主键
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    /** 用户 id */
+    /**
+     * 用户 id
+     */
     @Column(name = "user_id", nullable = false)
     private Long userId;
 
-    /** 用户名 */
+    /**
+     * 用户名
+     */
     @Column(name = "username", nullable = false)
     private String username;
 
-    /** 电话 */
+    /**
+     * 电话
+     */
     @Column(name = "phone", nullable = false)
     private String phone;
 
-    /** 省 */
+    /**
+     * 省
+     */
     @Column(name = "province", nullable = false)
     private String province;
 
-    /** 市 */
+    /**
+     * 市
+     */
     @Column(name = "city", nullable = false)
     private String city;
 
-    /** 详细地址 */
+    /**
+     * 详细地址
+     */
     @Column(name = "address_detail", nullable = false)
     private String addressDetail;
 
-    /** 创建时间 */
+    /**
+     * 创建时间
+     */
     @CreatedDate
     @Column(name = "create_time", nullable = false)
     private Date createTime;
 
-    /** 更新时间 */
+    /**
+     * 更新时间
+     */
     @LastModifiedDate
     @Column(name = "update_time", nullable = false)
     private Date updateTime;
 
     /**
      * <h2>根据 userId + AddressItem 得到 EcommerceAddress</h2>
-     * */
+     */
     public static EcommerceAddress to(Long userId, AddressInfo.AddressItem addressItem) {
 
         EcommerceAddress ecommerceAddress = new EcommerceAddress();
@@ -90,7 +109,7 @@ public class EcommerceAddress {
 
     /**
      * <h2>将 EcommerceAddress 对象转成 AddressInfo</h2>
-     * */
+     */
     public AddressInfo.AddressItem toAddressItem() {
 
         AddressInfo.AddressItem addressItem = new AddressInfo.AddressItem();
