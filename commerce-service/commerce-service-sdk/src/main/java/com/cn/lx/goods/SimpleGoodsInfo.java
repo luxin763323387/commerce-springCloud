@@ -31,11 +31,11 @@ public class SimpleGoodsInfo implements Serializable {
     @ApiModelProperty(value = "商品金额")
     private Integer price;
 
-    public static SimpleGoodsInfo object2SimpleGoodsInfo(Object object){
+    public static SimpleGoodsInfo object2SimpleGoodsInfo(Object object) {
         return JSONObject.parseObject(object.toString(), SimpleGoodsInfo.class);
     }
 
-    public static Long object2Id(Object object){
+    public static Long object2Id(Object object) {
         return JSONObject.parseObject(object.toString(), SimpleGoodsInfo.class).getId();
     }
 }

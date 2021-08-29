@@ -22,7 +22,7 @@ import java.util.List;
 
 /**
  * <h1>商品微服务对外暴露的功能服务 API 接口</h1>
- * */
+ */
 @Api(tags = "商品微服务功能接口")
 @Slf4j
 @RestController

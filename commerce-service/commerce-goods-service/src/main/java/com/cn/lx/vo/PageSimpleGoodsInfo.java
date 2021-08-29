@@ -1,4 +1,5 @@
 package com.cn.lx.vo;
+
 import com.cn.lx.goods.SimpleGoodsInfo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -10,7 +11,7 @@ import java.util.List;
 
 /**
  * <h1>分页商品信息</h1>
- * */
+ */
 @ApiModel(description = "分页商品信息对象")
 @Data
 @NoArgsConstructor

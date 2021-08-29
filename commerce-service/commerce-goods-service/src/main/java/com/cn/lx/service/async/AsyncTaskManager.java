@@ -4,7 +4,6 @@ import com.cn.lx.enums.AsyncTaskStatusEnum;
 import com.cn.lx.goods.GoodsInfo;
 import com.cn.lx.vo.AsyncTaskInfo;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -20,9 +19,10 @@ import java.util.concurrent.ConcurrentHashMap;
 @Component
 public class AsyncTaskManager {
 
-    private final static ConcurrentHashMap<String, AsyncTaskInfo> taskContainer ;
-    static{
-        taskContainer = new ConcurrentHashMap<String,AsyncTaskInfo>();
+    private final static ConcurrentHashMap<String, AsyncTaskInfo> taskContainer;
+
+    static {
+        taskContainer = new ConcurrentHashMap<String, AsyncTaskInfo>();
     }
 
     private final IAsyncService asyncService;
@@ -44,26 +44,25 @@ public class AsyncTaskManager {
         return taskInfo;
     }
 
-    public AsyncTaskInfo submitTask(List<GoodsInfo> goodsInfos){
+    public AsyncTaskInfo submitTask(List<GoodsInfo> goodsInfos) {
         AsyncTaskInfo taskInfo = initTask();
-        asyncService.asyncImportGoods(goodsInfos,taskInfo.getTaskId());
+        asyncService.asyncImportGoods(goodsInfos, taskInfo.getTaskId());
         return taskInfo;
     }
 
     /**
      * <h2>设置异步任务执行状态信息</h2>
-     * */
+     */
     public void setTaskInfo(AsyncTaskInfo taskInfo) {
         taskContainer.put(taskInfo.getTaskId(), taskInfo);
     }
 
     /**
      * <h2>获取异步任务执行状态信息</h2>
-     * */
+     */
     public AsyncTaskInfo getTaskInfo(String taskId) {
         return taskContainer.get(taskId);
     }
-
 
 
 }
