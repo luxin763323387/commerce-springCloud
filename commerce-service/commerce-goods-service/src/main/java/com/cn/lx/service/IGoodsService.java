@@ -1,6 +1,7 @@
 package com.cn.lx.service;
 
 import com.cn.lx.common.TableId;
+import com.cn.lx.goods.DeductGoodsInventory;
 import com.cn.lx.goods.GoodsInfo;
 import com.cn.lx.goods.SimpleGoodsInfo;
 import com.cn.lx.vo.PageSimpleGoodsInfo;
@@ -29,9 +30,9 @@ public interface IGoodsService{
      * */
     List<SimpleGoodsInfo> getSimpleGoodsInfoByTableId(TableId tableId);
 
-//    /**
-//     * <h2>扣减商品库存</h2>
-//     * */
-//    Boolean deductGoodsInventory(List<DeductGoodsInventory> deductGoodsInventories);
+    /**
+     * <h2>扣减商品库存</h2>
+     * */
+        Boolean deductGoodsInventory(List<DeductGoodsInventory> deductGoodsInventories);
 
 }

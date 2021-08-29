@@ -1,5 +1,6 @@
 package com.cn.lx.goods;
 
+import com.alibaba.fastjson.JSONObject;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -29,4 +30,12 @@ public class SimpleGoodsInfo implements Serializable {
 
     @ApiModelProperty(value = "商品金额")
     private Integer price;
+
+    public static SimpleGoodsInfo object2SimpleGoodsInfo(Object object){
+        return JSONObject.parseObject(object.toString(), SimpleGoodsInfo.class);
+    }
+
+    public static Long object2Id(Object object){
+        return JSONObject.parseObject(object.toString(), SimpleGoodsInfo.class).getId();
+    }
 }
