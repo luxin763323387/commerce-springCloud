@@ -31,4 +31,24 @@ Content-Type: application/json
 commerce-user: eyJhbGciOiJSUzI1NiJ9.eyJjb21tZXJjZS11c2VyIjoie1widWlkXCI6MTAsXCJ1c2VyTmFtZVwiOlwibHV4aW5cIn0iLCJqdGkiOiIzMmM5YWNlZC04YjZiLTQwNTQtYWI5Yy05MzBkZTZmZTlhOTYiLCJleHAiOjE2MjkwNDMyMDB9.OEbF9OIlkHmdeglTqw40VO2ps9iYiNMl71kQ0y2dM9dT6fvPzzOKLq1wNf1PN7BxB-sRRDJojdBdjJAbo0D4hKH8q6qJEGgO3y9eJKdIXry4kSrlDMlznU4wG9QOKnajU9amBJkTldnlmH0fLI2uJyUTmTzx15EltUan4Sz7owj6otD-AGvGCtR0An5iBwjtUhqgJnWvWzLoLnO0nmTJlpYQxWlS9VPnClO_OyJAUqTBlnUEH3YU66it6iIqr7PzLLnIVbsXIs2xGq4yIPo2QFf3qqoZGlo4lF3c8N12gvoLSObe8qJ_njjPbvHrhpyufVBeRqEsQ5OHGN7Xe_disw
 token: imooc
 
+### 获取 Token
+POST http://127.0.0.1:8000/commerce-nacos-client/communication/rest-template
+Content-Type: application/json
+
+{
+  "userName": "luxin",
+  "password": "e10adc3949ba59abbe56e057f20f883e"
+}
+
+
+### 获取 Token, 带有负载均衡
+POST http://127.0.0.1:8000/commerce-nacos-client/communication/rest-template-load-balancer
+Content-Type: application/json
+
+{
+  "userName": "luxin",
+  "password": "e10adc3949ba59abbe56e057f20f883e"
+}
+
 ###
+
