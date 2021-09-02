@@ -1,8 +1,10 @@
 package com.cn.lx.controller;
 
 import com.cn.lx.communication.UseRestTemplateService;
+import com.cn.lx.communication.UseRibbonService;
 import com.cn.lx.vo.JwtToken;
 import com.cn.lx.vo.UserNameAndPassword;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,10 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/communication")
 public class CommunicationController {
 
+    private final UseRibbonService ribbonService;
     private final UseRestTemplateService restTemplateService;
 
-    public CommunicationController(UseRestTemplateService restTemplateService) {
+    public CommunicationController(UseRestTemplateService restTemplateService, UseRibbonService ribbonService) {
         this.restTemplateService = restTemplateService;
+        this.ribbonService = ribbonService;
     }
 
     @PostMapping("/rest-template")
@@ -34,7 +38,7 @@ public class CommunicationController {
         return restTemplateService.getJwtTokenWithLoadBalancer(
                 usernameAndPassword);
     }
-/*
+
     @PostMapping("/ribbon")
     public JwtToken getTokenFromAuthorityServiceByRibbon(
             @RequestBody UserNameAndPassword usernameAndPassword) {
@@ -45,14 +49,14 @@ public class CommunicationController {
     public JwtToken thinkingInRibbon(@RequestBody UserNameAndPassword usernameAndPassword) {
         return ribbonService.thinkingInRibbon(usernameAndPassword);
     }
-
-    @PostMapping("/token-by-feign")
-    public JwtToken getTokenByFeign(@RequestBody UserNameAndPassword usernameAndPassword) {
-        return feignClient.getTokenByFeign(usernameAndPassword);
-    }
-
-    @PostMapping("/thinking-in-feign")
-    public JwtToken thinkingInFeign(@RequestBody UserNameAndPassword usernameAndPassword) {
-        return useFeignApi.thinkingInFeign(usernameAndPassword);
-    }*/
+//
+//    @PostMapping("/token-by-feign")
+//    public JwtToken getTokenByFeign(@RequestBody UserNameAndPassword usernameAndPassword) {
+//        return feignClient.getTokenByFeign(usernameAndPassword);
+//    }
+//
+//    @PostMapping("/thinking-in-feign")
+//    public JwtToken thinkingInFeign(@RequestBody UserNameAndPassword usernameAndPassword) {
+//        return useFeignApi.thinkingInFeign(usernameAndPassword);
+//    }*/
 }
